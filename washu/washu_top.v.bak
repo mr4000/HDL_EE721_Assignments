@@ -1,0 +1,47 @@
+module washu_top(
+    input wire clk,
+    input wire reset,
+    input wire pause,
+    input wire [1:0] regSelect,
+    output wire [15:0] dispReq
+);
+
+    // Internal connections
+    wire en;
+    wire rw;
+    wire [15:0] aBus;
+    wire [15:0] dBus;
+    
+    // Signals to connect CPU with Quartus-generated memory
+    
+	 wire [15:0] dbus_out;     
+
+    // write‑enable for the RAM
+    wire wren = en & ~rw;
+
+    // TRI‑STATE at top: when CPU is writing, release bus; else drive from RAM
+    assign dBus = wren ? 16'bz : dbus_out;
+    
+    // Instantiate CPU
+    WashU2CPU cpu_inst (
+        .clk(clk),
+        .reset(reset),
+        .pause(pause),
+        .en(en),
+        .rw(rw),
+        .aBus(aBus),
+        .dBus(dBus),
+        .regSelect(regSelect),
+        .dispReq(dispReq)
+    );
+
+    // Instantiate Quartus-generated memory
+    Mem memory_inst (
+        .address(aBus),      // Connect to CPU address bus
+        .clock(clk),         // Connect to system clock
+        .data(dBus),         // Connect to CPU data bus
+        .wren(wren),         // Connect to write enable signal
+        .q(mem_q)          // Connect to memory output
+    );
+
+endmodule

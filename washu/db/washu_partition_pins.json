@@ -1,0 +1,93 @@
+{
+	"partitions" : [
+		{
+			"name" : "Top",
+			"pins" : [
+				{
+					"name" : "dispReq[0]",
+					"strict" : false
+				},
+				{
+					"name" : "dispReq[1]",
+					"strict" : false
+				},
+				{
+					"name" : "dispReq[2]",
+					"strict" : false
+				},
+				{
+					"name" : "dispReq[3]",
+					"strict" : false
+				},
+				{
+					"name" : "dispReq[4]",
+					"strict" : false
+				},
+				{
+					"name" : "dispReq[5]",
+					"strict" : false
+				},
+				{
+					"name" : "dispReq[6]",
+					"strict" : false
+				},
+				{
+					"name" : "dispReq[7]",
+					"strict" : false
+				},
+				{
+					"name" : "dispReq[8]",
+					"strict" : false
+				},
+				{
+					"name" : "dispReq[9]",
+					"strict" : false
+				},
+				{
+					"name" : "dispReq[10]",
+					"strict" : false
+				},
+				{
+					"name" : "dispReq[11]",
+					"strict" : false
+				},
+				{
+					"name" : "dispReq[12]",
+					"strict" : false
+				},
+				{
+					"name" : "dispReq[13]",
+					"strict" : false
+				},
+				{
+					"name" : "dispReq[14]",
+					"strict" : false
+				},
+				{
+					"name" : "dispReq[15]",
+					"strict" : false
+				},
+				{
+					"name" : "regSelect[1]",
+					"strict" : false
+				},
+				{
+					"name" : "regSelect[0]",
+					"strict" : false
+				},
+				{
+					"name" : "clk",
+					"strict" : false
+				},
+				{
+					"name" : "reset",
+					"strict" : false
+				},
+				{
+					"name" : "pause",
+					"strict" : false
+				}
+			]
+		}
+	]
+}

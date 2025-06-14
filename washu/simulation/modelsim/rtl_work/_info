@@ -1,0 +1,99 @@
+m255
+K4
+z2
+13
+!s112 1.1
+!i10d 8192
+!i10e 25
+!i10f 100
+cModel Technology
+Z0 dC:/M.tech/HDL/washu/simulation/modelsim
+vMemory
+Z1 !s110 1746382283
+!i10b 1
+!s100 ii>MNjlA0AV=_B__0E^ce2
+I@0dV`1VC=97=hd8WM5mn_3
+Z2 VDg1SIo80bB@j0V0VzS_@n1
+R0
+w1746355260
+8C:/M.tech/HDL/washu/Memory.v
+FC:/M.tech/HDL/washu/Memory.v
+L0 39
+Z3 OV;L;10.5b;63
+r1
+!s85 0
+31
+Z4 !s108 1746382283.000000
+!s107 C:/M.tech/HDL/washu/Memory.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/M.tech/HDL/washu|C:/M.tech/HDL/washu/Memory.v|
+!i113 1
+Z5 o-vlog01compat -work work
+Z6 !s92 -vlog01compat -work work +incdir+C:/M.tech/HDL/washu
+Z7 tCvgOpt 0
+n@memory
+vwashu
+R1
+!i10b 1
+!s100 6US0YQaFnfzNLzUSkVe9i3
+I2jmKIDMPIN<AO3lM<n5>c2
+R2
+R0
+w1746355026
+8C:/M.tech/HDL/washu/washu.v
+FC:/M.tech/HDL/washu/washu.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/M.tech/HDL/washu/washu.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/M.tech/HDL/washu|C:/M.tech/HDL/washu/washu.v|
+!i113 1
+R5
+R6
+R7
+vwashu_tb
+R1
+!i10b 1
+!s100 LM01Rh2Jjb?gfJ`EUWM[j2
+IBPmGz@2h>[1jeMY>3Z_LH2
+R2
+R0
+w1746357185
+8C:/M.tech/HDL/washu/washu_tb.v
+FC:/M.tech/HDL/washu/washu_tb.v
+L0 3
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/M.tech/HDL/washu/washu_tb.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/M.tech/HDL/washu|C:/M.tech/HDL/washu/washu_tb.v|
+!i113 1
+R5
+R6
+R7
+vwashu_top
+R1
+!i10b 1
+!s100 eM>2K;a@gQ<:3P49lDkU:1
+IeH5Wl<8oCaaQVE2^V>bR[0
+R2
+R0
+w1746355592
+8C:/M.tech/HDL/washu/washu_top.v
+FC:/M.tech/HDL/washu/washu_top.v
+L0 1
+R3
+r1
+!s85 0
+31
+R4
+!s107 C:/M.tech/HDL/washu/washu_top.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+C:/M.tech/HDL/washu|C:/M.tech/HDL/washu/washu_top.v|
+!i113 1
+R5
+R6
+R7

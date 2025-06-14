@@ -1,0 +1,55 @@
+`timescale 1ns / 1ps
+
+module washu_tb;
+    // Testbench signals
+    reg clk;
+    reg reset;
+    reg pause;
+    reg [1:0] regSelect;
+    wire [15:0] dispReq;
+    
+    // Instantiate the top-level system
+    washu_top dut (
+        .clk(clk),
+        .reset(reset),
+        .pause(pause),
+        .regSelect(regSelect),
+        .dispReq(dispReq)
+    );
+    
+    // Clock generation
+    initial begin
+        clk = 0;
+        
+    end
+	 always #10 clk = ~clk; // 20ns clock period (50MHz)
+    
+    // Test sequence
+    initial begin
+        // Initialize test
+        reset = 1;
+        pause = 0;
+        regSelect = 2'b01; // Display PC by default
+        
+        // Apply reset for a few cycles
+        #50;
+        reset = 0;
+        
+        // Run for a while with PC display
+        #500;
+        
+        
+        // Pause the CPU
+        pause = 1;
+        #100;
+        
+        // Resume the CPU
+        pause = 0;
+        #200;
+        
+        // End simulation
+        $stop;
+    end
+
+
+endmodule

@@ -1,0 +1,46 @@
+-- Copyright (C) 2018  Intel Corporation. All rights reserved.
+-- Your use of Intel Corporation's design tools, logic functions 
+-- and other software and tools, and its AMPP partner logic 
+-- functions, and any output files from any of the foregoing 
+-- (including device programming or simulation files), and any 
+-- associated documentation or information are expressly subject 
+-- to the terms and conditions of the Intel Program License 
+-- Subscription Agreement, the Intel Quartus Prime License Agreement,
+-- the Intel FPGA IP License Agreement, or other applicable license
+-- agreement, including, without limitation, that your use is for
+-- the sole purpose of programming logic devices manufactured by
+-- Intel and sold by Intel or its authorized distributors.  Please
+-- refer to the applicable agreement for further details.
+
+-- Quartus Prime generated Memory Initialization File (.mif)
+
+
+DEPTH = 256;
+WIDTH = 16;
+ADDRESS_RADIX = HEX;
+DATA_RADIX = HEX;
+CONTENT BEGIN
+
+-- Initialize memory values
+00 : 2080;  -- LD M[0x80] ; ACC = A
+01 : 5083;  -- ST M[0x83] ; Save A temporarily
+
+02 : 2081;  -- LD M[0x81] ; ACC = B
+03 : 0001;  -- NEG        ; ACC = -B
+04 : 8083;  -- ADD M[0x83]; ACC = A - B
+
+05 : 0302;  -- BRP +2      ; If A - B >= 0 (A >= B), branch to store A
+06 : 2081;  -- LD M[0x81]  ; Else, load B
+07 : 5082;  -- ST M[0x82]  ; Store max(B)
+08 : 0102;  -- BR +2       ; Skip next
+09 : 2080;  -- LD M[0x80]  ; Load A
+0A : 5082;  -- ST M[0x82]  ; Store max(A)
+
+0B : 0000;  -- HALT
+
+-- Data section
+80 : 0005;  -- A = 5
+81 : 0007;  -- B = 7
+
+END;
+

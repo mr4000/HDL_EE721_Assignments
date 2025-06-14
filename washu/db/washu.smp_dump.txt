@@ -1,0 +1,21 @@
+
+State Machine - |washu_top|washu:inst|state
+Name state.ANDD state.ADD state.IND_STORE state.DIR_STORE state.IND_LOAD state.DIR_LOAD state.CONST_LOAD state.BRIND state.BRNEG state.BRPOS state.BRZERO state.BRANCH state.NEGATE state.HALT state.DECODE state.FETCH state.PAUSE state.RESET 
+state.RESET 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 
+state.PAUSE 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 
+state.FETCH 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 1 
+state.DECODE 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 1 
+state.HALT 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 
+state.NEGATE 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 
+state.BRANCH 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 1 
+state.BRZERO 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 1 
+state.BRPOS 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 1 
+state.BRNEG 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 1 
+state.BRIND 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 1 
+state.CONST_LOAD 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 1 
+state.DIR_LOAD 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 1 
+state.IND_LOAD 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.DIR_STORE 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.IND_STORE 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.ADD 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
+state.ANDD 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 
