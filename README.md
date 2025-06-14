@@ -1,0 +1,98 @@
+# WashU-2 HDL CPU Implementation
+
+This repository contains a Verilog implementation of a simple processor based on the **WashU-2 Instruction Set Architecture**, developed as part of the **EE721: HDL Design** course. The project is implemented in **Intel Quartus Prime** using Verilog HDL and includes a Quartus-generated single-port RAM (`altsyncram`) to serve as main memory.
+
+## 📁 Repository Structure
+
+washu_cpu/
+├── db/ # Quartus synthesis database (auto-generated)
+├── output_files/ # Generated programming files (.sof, .pof, etc.)
+├── simulation/ # (Optional) Simulation testbenches
+├── washu_top.v # Top-level Verilog module (CPU + memory)
+├── washu.v # Core CPU logic implementing WashU-2 ISA
+├── Memory.v # Quartus-generated RAM (altsyncram)
+├── memory.mif # Memory Initialization File
+├── washu_cpu.qpf # Quartus Project File
+├── washu_cpu.qsf # Quartus Settings File (pins, files, constraints)
+└── README.md # This documentation
+
+
+## 🚀 Features
+
+- **Fully FSM-controlled CPU** with states for Fetch, Decode, and Execute phases
+- Implements a subset of **WashU-2 ISA instructions**, including:
+  - Data movement: `CONST_LOAD`, `DIR_LOAD`, `IND_LOAD`, `DIR_STORE`, `IND_STORE`
+  - Arithmetic and logic: `NEGATE`, `ADD`, `ANDD`
+  - Control flow: `BRANCH`, `BRZERO`, `BRPOS`, `BRNEG`, `BRIND`
+  - System control: `HALT`, `PAUSE`
+- **Bidirectional data bus (`dBus`)** with proper tri-state control
+- **Memory-mapped register inspection** via `dispReq` and `regSelect`
+- **Support for indirect addressing and PC-relative branching**
+- **MIF-based ROM** for program initialization
+- **Modular and readable design** using Verilog constructs, tasks, and FSM
+
+## 🧠 Instruction Set Overview
+
+| Instruction     | Opcode Format     | Description                            |
+|----------------|-------------------|----------------------------------------|
+| `HALT`          | `0000 0000 0000 0000` | Halt the processor                    |
+| `NEGATE`        | `0000 0000 0000 0001` | Negate the value in ACC               |
+| `BRANCH`        | `0000 0001 xxxxxxxx` | PC-relative branch (signed offset)    |
+| `BRZERO`        | `0000 0010 xxxxxxxx` | Branch if ACC == 0                    |
+| `BRPOS`         | `0000 0011 xxxxxxxx` | Branch if ACC > 0 (signed)            |
+| `BRNEG`         | `0000 0100 xxxxxxxx` | Branch if ACC < 0 (signed)            |
+| `BRIND`         | `0000 0101 xxxxxxxx` | Indirect branch using memory          |
+| `CONST_LOAD`    | `0001 xxxx xxxxxxxx` | Load constant into ACC                |
+| `DIR_LOAD`      | `0010 xxxx xxxxxxxx` | Load from memory into ACC             |
+| `IND_LOAD`      | `0011 xxxx xxxxxxxx` | Load indirectly from memory into ACC  |
+| `DIR_STORE`     | `0101 xxxx xxxxxxxx` | Store ACC to memory                   |
+| `IND_STORE`     | `0110 xxxx xxxxxxxx` | Store ACC indirectly                  |
+| `ADD`           | `1000 xxxx xxxxxxxx` | Add memory operand to ACC             |
+| `ANDD`          | `1100 xxxx xxxxxxxx` | AND memory operand with ACC           |
+
+> Addressing: For instructions using memory, address is formed as `{this[15:12], ireg[11:0]}`.
+> 
+> For branch instructions, relative target is computed as `this + sign_extend(ireg[7:0])`.
+
+## 🖥️ Simulation & Debug
+
+- Use `regSelect` input to inspect internal CPU registers via `dispReq`:
+  - `00` → Instruction Register (`ireg`)
+  - `01` → Program Counter (`pc`)
+  - `02` → Accumulator (`acc`)
+  - `03` → ALU Output (`alu`, currently unused)
+
+- `pause` signal pauses execution and enters `PAUSE` state.
+- Memory reads/writes are multi-cycle and aligned with clock and `tick` counter.
+
+## 🧪 Usage Instructions
+
+### 📦 Requirements
+
+- Intel Quartus Prime (recommended: Lite Edition)
+- Supported Intel FPGA (e.g., MAX10)
+
+
+### 🔨 Build & Run
+
+1. Clone this repo and open the `washu_cpu.qpf` project file in Quartus.
+2. Review the top-level module: `washu_top.v`.
+3. Load your custom program into `memory.mif` (already linked to RAM).
+4. Compile the design (`Start Compilation`).
+5. Program your board using `.sof` file in `output_files/`.
+6. Use `pause`, `regSelect` signals to inspect registers..
+
+   📚 Reference
+This CPU design is inspired by concepts from:
+
+Jon Turner, Designing Digital Circuits: A Modern Approach, 1st Edition.
+Washington University in St. Louis.
+
+The implementation loosely follows the WashU-2 Instruction Set Architecture (ISA) described in the book, adapted and re-implemented in Verilog HDL instead of the original VHDL.
+
+📜 License
+This project is released for educational and academic use only as part of the EE721: HDL Design course.
+
+👤 Author
+Manish Ranjan
+M.Tech @ ICS| IIT Bombay
